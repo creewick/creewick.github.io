@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
-import PageContainer from './containers/PageContainer';
-import Home from './routes/Home';
+import Page from './components/Page';
+import Home from './components/Home';
 import './index.css';
 
 ReactDOM.render(
     <React.StrictMode>
-        <PageContainer>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Page>
                 <Route exact path="/" component={Home} />
-            </BrowserRouter>
-        </PageContainer>
+            </Page>
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),
 );

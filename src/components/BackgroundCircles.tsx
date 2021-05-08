@@ -1,32 +1,62 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import glass from '../styles/glass';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
+
+interface Props {
+    size: string;
+    top: string;
+    left: string;
+    color1: string;
+    color2: string;
+}
+
+const Provider = styled.div`
+    position: absolute;
+`;
+
+function Circle(x: Props) {
+    const Div = styled.div`
+        position: relative;
+        top: ${x.top};
+        left: calc(50vw + ${x.left});
+
+        width: ${x.size};
+        height: ${x.size};
+
+        border-radius: ${x.size};
+
+        background: ${x.color1};
+        background: linear-gradient(${x.color1}, ${x.color2});
+    `;
+
+    return <Div />;
+} 
 
 export default function BackgroundCircles() {
-    const renderCircle = () => {
-        const random = (min: number, max: number) => Math.round(Math.random() * (max - min) + min);
-        const size = random(50, 200);
-        const top = random(100, 2000);
-        const left = random(-600, 600);
-        const color = ['#ffffff20', '#33336680', '#cc66ff80'][random(0, 2)];
-    
-        const Circle = styled.div`
-            ${glass}
-            width: ${size}px;
-            height: ${size}px;
-            border-radius: ${size}px;
-            position: absolute;
-            top: ${top}px;
-            left: calc(50vw + ${left}px);
-            background: ${color};
-        `;
 
-        return <Circle/>
-    }
-    
     return (
-        <div>
-            {Array.from({length: 20}).map(renderCircle)}
-        </div>
+        <Provider>
+            <ParallaxProvider>
+                <Parallax y={[0, 200]}>
+                    <Circle
+                        left="30vmin"
+                        top="-60vmin"
+                        size="500px"
+                        color1="purple"
+                        color2="purple"
+                    />
+                </Parallax>
+                <Parallax y={[0, 80]}>
+                    <Circle
+                        left="-80vmin"
+                        top="0"
+                        size="800px"
+                        color1="orange"
+                        color2="orange"
+                    />
+                </Parallax>
+            </ParallaxProvider>
+        </Provider>
     );
 }
