@@ -1,11 +1,11 @@
 import React from 'react';
-import Logo from './Logo';
+import LogoBlock from './LogoBlock/LogoBlock';
 
 export default function Home() {
     return (
         <div>
-            <Logo/>
-            <Logo/>
+            <LogoBlock/>
+            <LogoBlock/>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import BackgroundCircles from '../components/BackgroundCircles';
-import Background from '../components/Background';
+import BackgroundCircles from './BackgroundCircles/BackgroundCircles';
+import Background from './Background';
 import styled from 'styled-components';
 
 interface Props {
